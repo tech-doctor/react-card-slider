@@ -1,0 +1,32 @@
+
+.card-inner{
+    width: fit-content;
+    /* width: 500px; */
+    display: inline-block;
+    border-radius: 10px;
+    margin: 10px 7px;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+}
+
+
+/* put margin between two cards side by side */
+
+.card-inner .card-bottom {
+  padding:  0 10px;
+  
+}
+    
+
+.card-inner .card-bottom .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+  }
+
+
+  .card-top img{
+    background-color: grey;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
