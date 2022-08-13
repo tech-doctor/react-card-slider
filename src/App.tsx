@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from '@iconify/react';
 import CardSlider from './Component/CardSlider';
 import './App.css';
 
@@ -7,9 +8,19 @@ const  App = () => {
   return (
     <div style={style}>
      <CardSlider
-        backgroundColor='#02897A'
-        icon={['<','>']}
-     >
+        myColor='grey'
+        mobileStyle = {false}
+        icon = {[
+          <Icon 
+        icon={'fa-angle-left'} />,
+
+          <Icon 
+        icon={'fa-angle-right'} />
+
+        // <img style={{color:'white'}} width={'18px'} height ={'18px'} src='https://cdn2.iconfinder.com/data/icons/font-awesome/1792/angle-right-512.png' alt=''/>,
+        //   <img style={{color:'white'}} width={'18px'} height ={'18px'} src='https://cdn2.iconfinder.com/data/icons/font-awesome/1792/angle-right-512.png' alt=''/>
+        ]}
+        >
       {cards.map((index) => 
         <div key = {index} className='card-inner'>
         <div className='card-top'>

@@ -1,6 +1,7 @@
-/* *{
-  outline: 1px solid black;
-} */
+*{
+  box-sizing: border-box;
+  /* outline: 1px solid black; */
+}
 
 body {
   margin: 0 10px;

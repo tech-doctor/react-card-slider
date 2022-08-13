@@ -6,67 +6,88 @@
 }
 
 .slider{
-    width: 100%;
-    height: 100%;
-    white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scrollbar-width:none;
-    scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width:none;
+  scroll-behavior: smooth;
+}
 
-  }
-  .slider::-webkit-scrollbar {
-    width: 3px;
-    height: 2px;
-    background-color: rgb(121, 180, 175);
-    border-radius: 100px;
-  }
-  .slider::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  .slider::-webkit-scrollbar-thumb {
-    background-color: rgb(112, 112, 112);
-    background-color: #02897A;
-    border-radius: 100px;
-  }
+.slider::-webkit-scrollbar {
+  width: 3px;
+  height: 2px;
+  background-color: rgb(121, 180, 175);
+  border-radius: 100px;
+}
+.slider::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.slider::-webkit-scrollbar-thumb {
+  background-color: rgb(112, 112, 112);
+  border-radius: 100px;
+}
 
-  @media (min-width: 850px) {
-     .slider::-webkit-scrollbar {
-        display: none;
-     }
-  }
-  .angle{
-    z-index: 1;
-    padding: 0.08em;
-    color:#02897A;
-    text-align:center;
-    background-color:white;
-    border-radius: 50%;
-    cursor:pointer;
-    border : 1px solid #02897A;
-    width: 20px;
-    height: 20px;
-  }
-  .angle:hover{
-      background-color: #02897A;
-      color:white;
+@media (min-width: 850px) {
+    .slider::-webkit-scrollbar {
+      display: none;
     }
-  @media (max-width: 850px) { 
-     .angle{
-        display:none;
-     }
-   }
+}
+.angle{
+  z-index: 1;
+  color:#02897A;
+  text-align:center;
+  background-color:white;
+  border-radius: 50%;
+  cursor:pointer;
+  border : 1px solid #02897A;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
 
-  .angle_left{
-    position: absolute;
-    left: 0;
-    margin-left: -12px;
+/* .border{
+  color:#02897A;
+  border : 1px solid #02897A;
+} */
+
+.angle_left{
+  position: absolute;
+  left: 0;
+  margin-left: -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.angle_right{
+  position: absolute;
+  right: 0;
+  margin-right: -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.angle:hover{
+    background-color: #02897A;
+    color:white;
   }
-  .angle_right{
-    position: absolute;
-    right: 0;
-    margin-right: -12px;
+
+  @media (max-width: 850px) {
+    .mobile{
+      display: none;
+    }
   }
+
+/* @media (max-width: 850px) { 
+    .angle{
+      display:none;
+    }
+  } */
+
+
 
 
 
