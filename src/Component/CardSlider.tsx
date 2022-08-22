@@ -2,7 +2,6 @@ import React,{useState,useRef,useEffect} from 'react';
 import "./cardslider.css";
 
 
-
 interface Props {
   children: React.ReactNode;
   myColor?: string;
@@ -10,8 +9,7 @@ interface Props {
   mobileStyle?: boolean;
 }
 
-
-const CardSlider:React.FC<Props> = ({children,myColor, icon, mobileStyle}) => {
+const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
   
   let myRef = useRef<any>();
   const [isHoveringLeft, setIsHoveringLeft] = useState(false);
@@ -24,15 +22,19 @@ const CardSlider:React.FC<Props> = ({children,myColor, icon, mobileStyle}) => {
     if(icon?.length === 0){
       //eslint-disable-next-line
       throw ('icon is cannot be empty');
-    }else if(icon && icon?.length !== 2){
+    }else if(icon && icon?.length < 2){
       //eslint-disable-next-line
-      throw ('icon must contain two elements');
-    }else{
+      throw ('icon cannot be less than 2');
+    } else if(icon && icon?.length > 2){
+      //eslint-disable-next-line
+      throw ('icon cannot be more than 2');
+    }
+    else{
       return;
     }
   },[icon]);
 
-  const slideLeft  =() => {
+  const slideLeft  = () => {
     myRef.current.scrollLeft -= 500;
     if(myRef.current.scrollLeft <= 500 ){
       setChangeLeftStyle(true)
@@ -66,8 +68,6 @@ const CardSlider:React.FC<Props> = ({children,myColor, icon, mobileStyle}) => {
 
   
    
-
-
   return (
     <div className="card-slider">
       <div 
@@ -87,12 +87,13 @@ const CardSlider:React.FC<Props> = ({children,myColor, icon, mobileStyle}) => {
 
         {icon? icon[0] : '<'}
       </div>
-     
+
       <div ref={myRef}
       onScroll={handleScroll}
         className='slider'>
         {children}
       </div>
+
       <div 
       onMouseEnter={() => setIsHoveringRight(true)}
       onMouseLeave={() => setIsHoveringRight(false)}
@@ -123,6 +124,10 @@ const CardSlider:React.FC<Props> = ({children,myColor, icon, mobileStyle}) => {
  }
 
 
+
+
+// const isRedValid = CSS.supports('color', 'red');
+// console.log(isRedValid)
 
 
  
