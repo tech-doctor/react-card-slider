@@ -17,7 +17,6 @@ const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
   const [changeLeftStyle, setChangeLeftStyle] = useState(true);
   const [changeRightStyle, setChangeRightStyle] = useState(false);
 
-
   useEffect(() => {
     if(icon?.length === 0){
       //eslint-disable-next-line
@@ -34,11 +33,13 @@ const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
     }
   },[icon]);
 
+
   const slideLeft  = () => {
     myRef.current.scrollLeft -= 500;
     if(myRef.current.scrollLeft <= 500 ){
       setChangeLeftStyle(true)
       setChangeRightStyle(false)
+      console.log('inside');
     }
   }
   
@@ -63,21 +64,19 @@ const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
       setChangeLeftStyle(false)
       setChangeRightStyle(false)
     }
-    //console.log(changeLeftStyle)
   }
 
+
   
-   
   return (
     <div className="card-slider">
-      <div 
+      <button 
       onMouseEnter={() => setIsHoveringLeft(true)}
       onMouseLeave={() => setIsHoveringLeft(false)}
        onClick={slideLeft}
        style={{...style(myColor? myColor: ''),
        
        backgroundColor: changeLeftStyle && myColor? myColor: changeLeftStyle && !myColor ? '#02897A': myColor && isHoveringLeft ? myColor : '' , 
-
 
         color: changeLeftStyle || isHoveringLeft ? 'white':
         myColor
@@ -86,15 +85,18 @@ const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
        className={`angle angle_left ${mobileStyle && 'mobile'} `}>
 
         {icon? icon[0] : '<'}
-      </div>
+      </button>
 
-      <div ref={myRef}
-      onScroll={handleScroll}
-        className='slider'>
+      <div 
+        ref={myRef}
+        onScroll={handleScroll}
+        className='slider'
+        data-testid = 'sliderElement'
+      >
         {children}
       </div>
 
-      <div 
+      <button 
       onMouseEnter={() => setIsHoveringRight(true)}
       onMouseLeave={() => setIsHoveringRight(false)}
 
@@ -108,8 +110,7 @@ const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
 
       className={`angle angle_right ${mobileStyle && 'mobile'}`}>
         {icon? icon[1] : '>'}
-        </div>
-
+        </button>
     </div>
   );
 }
@@ -122,17 +123,6 @@ const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
   }
   return style;
  }
-
-
-
-
-// const isRedValid = CSS.supports('color', 'red');
-// console.log(isRedValid)
-
-
- 
- 
-
 
 export default CardSlider;
 

@@ -16,7 +16,8 @@ const  App = () => {
         icon={'fa-angle-left'} />,
           <Icon 
         icon={'fa-angle-right'} />
-        ]}>
+        ]}
+        >
           
       {cards.map((index) => 
         <div 
