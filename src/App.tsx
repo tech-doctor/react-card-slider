@@ -10,7 +10,7 @@ const  App = () => {
     <div style={style}>
      <CardSlider
         myColor=''
-        mobileStyle = {false}
+        mobileStyle = {true}
         icon = {[
           <Icon 
         icon={'fa-angle-left'} />,
