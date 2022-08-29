@@ -2,14 +2,16 @@ import React,{useState,useRef,useEffect} from 'react';
 import "./cardslider.css";
 
 
+
+
 interface Props {
   children: React.ReactNode;
-  myColor?: string;
+  styleColor?: string;
   icon?: any[];
   mobileStyle?: boolean;
 }
 
-const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
+const CardSlider:React.FC<Props> = ({children, styleColor, icon, mobileStyle}) => {
   
   let myRef = useRef<any>();
   const [isHoveringLeft, setIsHoveringLeft] = useState(false);
@@ -32,6 +34,15 @@ const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
       return;
     }
   },[icon]);
+
+
+  useEffect(() => {
+    if(isColor(styleColor) !== true){
+      throw (`${styleColor} is not a valid color`); 
+    }
+  },[styleColor]);
+
+
 
 
   const slideLeft  = () => {
@@ -68,22 +79,21 @@ const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
 
 
   
+  
   return (
     <div className="card-slider">
       <button 
       onMouseEnter={() => setIsHoveringLeft(true)}
       onMouseLeave={() => setIsHoveringLeft(false)}
        onClick={slideLeft}
-       style={{...style(myColor? myColor: ''),
-       
-       backgroundColor: changeLeftStyle && myColor? myColor: changeLeftStyle && !myColor ? '#02897A': myColor && isHoveringLeft ? myColor : '' , 
+       style={{...style(styleColor && isColor(styleColor)? styleColor: ''),
 
-        color: changeLeftStyle || isHoveringLeft ? 'white':
-        myColor
+       backgroundColor: changeLeftStyle && styleColor && isColor(styleColor)?styleColor: !changeLeftStyle && !isHoveringLeft ? '' : !changeLeftStyle && isHoveringLeft && styleColor && isColor(styleColor) ? styleColor: '#02897A' ,
+
+       color: changeLeftStyle || isHoveringLeft ? 'white': !changeLeftStyle && !isHoveringLeft && styleColor && isColor(styleColor)? styleColor : '#02897A' 
       }}
 
-       className={`angle angle_left ${mobileStyle && 'mobile'} `}>
-
+      className={`angle angle_left ${mobileStyle && 'mobile'} `}>
         {icon? icon[0] : '<'}
       </button>
 
@@ -100,31 +110,38 @@ const CardSlider:React.FC<Props> = ({children, myColor, icon, mobileStyle}) => {
       onMouseEnter={() => setIsHoveringRight(true)}
       onMouseLeave={() => setIsHoveringRight(false)}
 
-        onClick={slideRight}
+      onClick={slideRight}
       style={
-        {...style(myColor? myColor: ''), 
-        
-        backgroundColor:changeRightStyle  && myColor? myColor: changeRightStyle && !myColor ? '#02897A': myColor && isHoveringRight ? myColor : '' , 
-        
-        color: changeRightStyle || isHoveringRight ? 'white': myColor}}
+        {...style(styleColor && isColor(styleColor)? styleColor: ''), 
 
-      className={`angle angle_right ${mobileStyle && 'mobile'}`}>
+        backgroundColor: changeRightStyle && styleColor && isColor(styleColor)?styleColor: !changeRightStyle && !isHoveringRight ? '' : !changeRightStyle && isHoveringRight && styleColor && isColor(styleColor) ? styleColor: '#02897A',
+
+        color: changeRightStyle || isHoveringRight ? 'white': !changeRightStyle && !isHoveringRight && styleColor && isColor(styleColor)? styleColor : '#02897A' 
+      }}
+
+        className={`angle angle_right ${mobileStyle && 'mobile'}`}>
         {icon? icon[1] : '>'}
         </button>
     </div>
   );
 }
 
- function style(color:string){
+function isColor(strColor:any):boolean{
+  const  defaultStyle = new Option().style;
+  defaultStyle.color  = strColor?strColor: '';
+  if(defaultStyle.color.length !== 0)
+  return true
+  else{
+    return false;
+  }
+}
+
+ function style(color:any):object{
   const style = {
     color: color,
     border: `1px solid ${color}`,
-    
   }
   return style;
  }
 
 export default CardSlider;
-
-
-//npm install --save-dev @iconify/react

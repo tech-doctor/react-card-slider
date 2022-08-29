@@ -30,9 +30,9 @@
 }
 
 @media (min-width: 850px) {
-    .slider::-webkit-scrollbar {
-      display: none;
-    }
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
 }
 .angle{
   z-index: 1;
@@ -59,8 +59,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
+
 .angle_right{
   position: absolute;
   right: 0;

@@ -14,7 +14,7 @@ describe('CardSlider', () => {
     render(
       <CardSlider
         children={<div>hello</div>}
-        myColor="red"
+        styleColor="red"
         icon={['left', 'right']}
         mobileStyle={true}
       />
@@ -25,7 +25,7 @@ describe('CardSlider', () => {
     render(
       <CardSlider
         children={<div>hello</div>}
-        myColor="red"
+        styleColor="red"
         icon={['left', 'right']}
         mobileStyle={true}
       />
@@ -52,7 +52,7 @@ describe('CardSlider', () => {
     render(
       <CardSlider
         children={<div>hello</div>}
-        myColor="red"
+        styleColor="red"
         icon={['left', 'right']}
         mobileStyle={true}
       />
@@ -82,7 +82,7 @@ describe('CardSlider', () => {
     render(
       <CardSlider
         children={<div>hello</div>}
-        myColor="red"
+        styleColor="red"
         icon={['left', 'right']}
         mobileStyle={true}
       />
@@ -101,7 +101,7 @@ describe('CardSlider', () => {
     render(
       <CardSlider
         children={<div>hello</div>}
-        myColor="red"
+        styleColor="red"
         icon={['left', 'right']}
         mobileStyle={true}
       />

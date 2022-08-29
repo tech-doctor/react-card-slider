@@ -1,7 +1,6 @@
 
 .card-inner{
     width: fit-content;
-    /* width: 500px; */
     display: inline-block;
     border-radius: 10px;
     margin: 10px 7px;
@@ -10,11 +9,9 @@
 }
 
 
-/* put margin between two cards side by side */
 
 .card-inner .card-bottom {
   padding:  0 10px;
-  
 }
     
 
